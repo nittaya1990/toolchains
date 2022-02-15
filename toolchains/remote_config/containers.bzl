@@ -2,6 +2,7 @@
 
 """SHA 256 values for each image."""
 container_digests = {
+    # Unused?
     "ubuntu16.04": "sha256:b90dcf2f35f3354909f4491bdf019c110b4b4d95ef0395ebf178bc5d523a4208",
     "centos6": "sha256:d09c12fb26fbbe8398b4973260c75172eb67d509dae9d6f4ad54279b7d6b0494",
     "ubuntu16.04-manylinux2010": "sha256:5b6a55a33046843a3c3b3b3d13b028cc6e61d8af5275998e95fa539cafe72c51",
@@ -15,11 +16,14 @@ container_digests = {
     "cuda10.1-cudnn7-ubuntu18.04-manylinux2010-multipython": "sha256:71e946b59a63e80d10178f9e2869af3b31583737b779edc27688c99f4998dd05",
     "cuda10.2-cudnn7-ubuntu18.04-manylinux2010-multipython": "sha256:9bb24f6f98e71b424dd885ec9fe39770831376840fa2231057807c89f814c803",
     "cuda11.0-cudnn8-ubuntu18.04-manylinux2010-multipython": "sha256:3e5c991f67e2cca610cb9f6b39927e3757ba1e7f2424d18cef8b871bfa4d75b3",
-    "cuda11.1-cudnn8-ubuntu18.04-manylinux2010-multipython": "sha256:db18e2a8d4c6533fb9271ad0ec13f100a2f7688b3814cb166dfb43ae583fbb94",
-    "cuda11.2-cudnn8.1-ubuntu18.04-manylinux2010-multipython": "sha256:c20ba79d984078c55c07cdb142999e05559d40d8b3f83ed00dbe7510c5bad2a4",
-    "cuda11.4-cudnn8.0.5-ubuntu18.04-manylinux2010-multipython": "sha256:dd2949ce08655001721360dde3905939152c18f6cf6be74e975c6d6a3a98791f",
-    "cuda11.4-cudnn8.2-ubuntu18.04-manylinux2010-multipython": "sha256:9d7f3b28056a0ebe62077ad6b93c26a633d8a6d56fe97427c6145e068c657a1c",
-    "rocm-ubuntu18.04-manylinux2010-multipython": "sha256:d96925dd7c3aa5e3be37c6487959b44bcb2650943c3f28bded4c9632718c2124",
+    # TF and JAX RBE containers section
+    "cuda11.1-cudnn8-ubuntu18.04-manylinux2010-multipython": "sha256:bf24e58c0e18d60a99bee81c65d9f50b19548dec352404f0593ba5ea18c7e85c",
+    "cuda11.2-cudnn8.1-ubuntu18.04-manylinux2010-multipython": "sha256:904ea6196b81fe67bf5a3c00d336b7c6f990d49291abd2c1dec0654ee7ac3041",
+    "cuda11.4-cudnn8.0.5-ubuntu18.04-manylinux2010-multipython": "sha256:0777b477c37b003895713bd11e4e4db99329b7f03b77b130d49437881d71b795",
+    "cuda11.4-cudnn8.2-ubuntu18.04-manylinux2010-multipython": "sha256:589c2fa98484dd83bcf0ffe371640a7c1a0c5e7299c0fc871c8820ddcbca2699",
+    "cuda11.2-cudnn8.1-ubuntu18.04-manylinux2014-multipython": "sha256:96ca0037fa5ad35468d6c9f64601298144dee4415d521cce59d8c36d8e6b4d24",
+    # Others
+    "rocm-ubuntu18.04-manylinux2010-multipython": "sha256:0cc50129979d8e96f8e218e3d73506b044c88898ade095f1ed5adbc24ca363af",
     "windows-1803": "sha256:f109576c7c0c8a1783ff22b666e8923b52dbbe7933f69a1c7a7275202c304a12",
 }
 
@@ -72,7 +76,7 @@ containers = {
         "repository": "tensorflow-testing/nosla-cuda11.0-cudnn8-ubuntu18.04-manylinux2010-multipython",
         "digest": container_digests["cuda11.0-cudnn8-ubuntu18.04-manylinux2010-multipython"],
     },
-    
+
     # Built with //tensorflow/tools/ci_build/Dockerfile.rbe.cuda11.1-cudnn8-ubuntu18.04-manylinux2010-multipython.
     "cuda11.1-cudnn8-ubuntu18.04-manylinux2010-multipython": {
         "registry": "gcr.io",
@@ -86,7 +90,7 @@ containers = {
         "repository": "tensorflow-testing/nosla-cuda11.2-cudnn8.1-ubuntu18.04-manylinux2010-multipython",
         "digest": container_digests["cuda11.2-cudnn8.1-ubuntu18.04-manylinux2010-multipython"],
     },
-    
+
     # Built with //tensorflow/tools/ci_build/Dockerfile.rbe.cuda11.4-cudnn8.0.5-ubuntu18.04-manylinux2010-multipython.
     "cuda11.4-cudnn8.0.5-ubuntu18.04-manylinux2010-multipython": {
         "registry": "gcr.io",
@@ -101,6 +105,13 @@ containers = {
         "digest": container_digests["cuda11.4-cudnn8.2-ubuntu18.04-manylinux2010-multipython"],
     },
 
+    # Built with //tensorflow/tools/ci_build/Dockerfile.rbe.cuda11.2-cudnn8.1-ubuntu18.04-manylinux2014-multipython.
+    "cuda11.2-cudnn8.1-ubuntu18.04-manylinux2014-multipython": {
+        "registry": "gcr.io",
+        "repository": "tensorflow-testing/nosla-cuda11.2-cudnn8.1-ubuntu18.04-manylinux2014-multipython",
+        "digest": container_digests["cuda11.2-cudnn8.1-ubuntu18.04-manylinux2014-multipython"],
+    },
+
     # Built with //tensorflow/tools/ci_build/Dockerfile.rbe.rocm-ubuntu18.04-manylinux2010-multipython.
     "rocm-ubuntu18.04-manylinux2010-multipython": {
         "registry": "gcr.io",
@@ -108,7 +119,7 @@ containers = {
         "digest": container_digests["rocm-ubuntu18.04-manylinux2010-multipython"],
     },
 
-    # Built by gunan@ from a private Dockerfile.
+    # Built by mihaimaruseac@ from a private Dockerfile.
     "windows-1803": {
         "registry": "gcr.io",
         "repository": "tensorflow-testing/tf-win-rbe",
